@@ -1,0 +1,44 @@
+{
+  "name": "DevInsights",
+  "version": "0.1.0",
+  "description": "DevInsights is a platform for developers to share their insights and experiences with other developers.",
+  "main": "server.js",
+  "scripts": {
+    "install-dependencies": "npm run install-client && npm run install-server && npm install",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "build-client": "npm run build --prefix client",
+    "lint": "eslint --ext js,jsx",
+    "lint-fix": "eslint --ext js,jsx --fix",
+    "check": "prettier --check",
+    "format": "prettier --write",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-docker": "docker-compose --env-file .env up -d",
+    "stop-docker": "docker-compose down",
+    "start-server": "npm run start-server --prefix server",
+    "start-client": "npm start --prefix client",
+    "start": "npm run start-client",
+    "start-haha": "npm run start-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+"
+  },
+  "author": "DevInsights",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.2",
+    "@typescript-eslint/parser": "^5.48.2",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.32.1",
+    "prettier": "^2.8.1"
+  }
+}

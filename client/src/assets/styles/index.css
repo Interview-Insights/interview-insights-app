@@ -1,0 +1,28 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --backgroundColor: #333333;
+  --textColor: white;
+}
+
+body {
+  background: var(--backgroundColor);
+  color: var(--textColor);
+}
+
+.image-container {
+  flex: 1; /* Take up remaining space in the flex container */
+  background-color: #333333; /* Dark grey background color */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 50%; /* Adjust the maximum width of the image */
+  max-height: 50%; /* Adjust the maximum height of the image */
+}

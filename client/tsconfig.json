@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "composite": true,
+
+    "baseUrl": "./src/",
+    "outDir": "./dist",
+    "rootDir": "./src/",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    /* Build */
+    "noEmit": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "declaration": true,
+    "declarationMap": false,
+    "preserveSymlinks": true,
+    "jsx": "react-jsx",
+
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    /* Type-Checking Options */
+    "strict": false,
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "types": ["react", "react-router-dom", "node"],
+    "paths": {
+      // "*": ["node_modules/*"],
+      // "react-router-dom": ["node_modules/react-router-dom"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["dist", "node_modules", "db-data"]
+}

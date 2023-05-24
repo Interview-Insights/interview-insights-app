@@ -1,0 +1,32 @@
+{
+  "minify": false,
+  "sourceMaps": true,
+  "inlineSourcesContent": true,
+  "jsc": {
+    "parser": {
+      "parseMap": true,
+      "syntax": "ecmascript",
+      "jsx": true,
+      "dynamicImport": true,
+      "typescript": true,
+      "decorators": true
+    },
+    "transform": {
+      "react": {
+        "development": true,
+        "refresh": true,
+        "runtime": "automatic"
+      },
+      "optimizer": {
+        "simplify": true,
+        "globals": {
+          "vars": {
+            "__DEBUG__": "true"
+          }
+        }
+      }
+    },
+    "loose": true,
+    "externalHelpers": true
+  }
+}

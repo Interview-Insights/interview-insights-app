@@ -1,0 +1,30 @@
+{
+  "ts-node": {
+    "transpileOnly": true,
+    "swc": true,
+    "esm": true
+  },
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "strict": false,
+    "paths": {
+      "@controllers/*": ["./src/controllers/*"],
+      "@models/*": ["./src/models/*"],
+      "@routes/*": ["./src/routes/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist", "node_modules", "db-data"]
+}

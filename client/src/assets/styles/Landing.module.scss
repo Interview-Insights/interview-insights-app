@@ -1,0 +1,23 @@
+.Landing {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.intro {
+  border: 1rem;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  max-width: 30vw;
+  font-size: 3em;
+  justify-content: center;
+  align-content: center;
+}
+
+.button {
+  font-size: 2em;
+}

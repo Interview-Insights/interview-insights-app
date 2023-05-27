@@ -26,7 +26,12 @@ const common = {
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules/normalize.css'),
         ],
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          'css-modules-typescript-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
       {
         test: /\.svg$/,
@@ -63,7 +68,7 @@ const common = {
     }),
   ].filter(Boolean),
   resolve: {
-    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.mjs', '.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
   },
 };
 

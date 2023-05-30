@@ -1,4 +1,5 @@
 import Landing from './components/Landing';
+import Home from './components/Home';
 import supabase from './config/supabaseClient.js';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';

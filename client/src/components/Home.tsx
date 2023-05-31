@@ -1,13 +1,16 @@
 import PostQuestion from './PostQuestion';
 import QuestionList from './QuestionList';
-import { useState, useEffect } from 'react';
-import { Auth } from '@supabase/auth-ui-react';
-import {
-  useSession,
-  useUser,
-  useSupabaseClient,
-} from '@supabase/auth-helpers-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
+import { useState, useEffect, useContext } from 'react';
+import supabase from '../config/supabaseClient.js';
+import { useAppContext } from '../context/appContext';
+
+// import {
+//   useSession,
+//   useUser,
+//   useSupabaseClient,
+//   SupabaseClient,
+// } from '@supabase/auth-helpers-react';
+// import { ThemeSupa } from '@supabase/auth-ui-shared';
 
 // interface Question {
 //   title: string;
@@ -15,13 +18,11 @@ import { ThemeSupa } from '@supabase/auth-ui-shared';
 // }
 
 const Home = () => {
-  //   const session = useSession();
-  const supabase = useSupabaseClient();
-  //   const user = useUser();
 
+  const session = useAppContext();
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  /** 
+  
   const fetchAll = async () => {
     if (!session) return;
     try {
@@ -51,23 +52,16 @@ const Home = () => {
   useEffect(() => {
     fetchAll();
   }, [session]);
-*/
-  return (
-    <Auth
-      supabaseClient={supabase}
-      theme='dark'
-      appearance={{ theme: ThemeSupa }}
-    />
-  );
+
   return (
     <div className='container' style={{ padding: '50px 0 100px 0' }}>
-      {!session ? (
+      {/* {!session ? (
         <Auth
           supabaseClient={supabase}
           theme='dark'
           appearance={{ theme: ThemeSupa }}
         />
-      ) : (
+      ) : ( */}
         <div>
           <PostQuestion
             onRequestUpdate={() => {
@@ -82,7 +76,7 @@ const Home = () => {
             loading={loading}
           />
         </div>
-      )}
+      {/* }) */}
     </div>
   );
 };

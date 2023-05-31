@@ -1,19 +1,13 @@
-import Landing from './components/Landing';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
-import supabase from './config/supabaseClient.js';
-import { Auth } from '@supabase/auth-ui-react';
-import AuthBasic from './components/Auth';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { Routes, Route } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { AppProvider, useAppContext } from './context/appContext';
-// import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
-import { SessionContextProvider } from '@supabase/auth-helpers-react';
-// import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import Landing from './components/Landing';
+import getClient from './config/supabaseClient.js';
+import { AppProvider } from './context/appContext';
+import { SupabaseAuth } from './components/Auth';
 
 const App = () => {
-  // const [supabase] = useState(() => createBrowserSupabaseClient())
-  // const supabase = useSupabaseClient();
+  const supabase = getClient();
   const [session, setSession] = useState(null);
 
   useEffect(() => {
@@ -23,8 +17,20 @@ const App = () => {
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
+      if (session && window.location.pathname === '/login') {
+        window.location.href = '/home';
+      }
     });
   }, []);
+
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (window.location.pathname === '/home') {
+      window.location.href = '/login';
+    }
+  };
+
+  console.log(supabase.auth);
 
   return (
     <AppProvider value={session}>
@@ -32,19 +38,8 @@ const App = () => {
         <p>Interview Insights</p>
         <Routes>
           <Route path='/' element={<Landing />} />
-          <Route
-            path='/login'
-            element={
-              // <Auth
-              //   supabaseClient={supabase}
-              //   appearance={{ theme: ThemeSupa }}
-              //   theme='dark'
-              //   redirectTo={`/home`}
-              // />
-              <AuthBasic />
-            }
-          />
-          <Route path='/home' element={<Home />} />
+          <Route path='/login' element={<SupabaseAuth />} />
+          <Route path='/home' element={<Home signOut={signOut} />} />
         </Routes>
       </div>
     </AppProvider>

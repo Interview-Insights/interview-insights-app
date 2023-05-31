@@ -1,7 +1,7 @@
 import PostQuestion from './PostQuestion';
 import QuestionList from './QuestionList';
 import { useState, useEffect, useContext } from 'react';
-import supabase from '../config/supabaseClient.js';
+import getClient from '../config/supabaseClient.js';
 import { useAppContext } from '../context/appContext';
 
 // import {
@@ -17,12 +17,12 @@ import { useAppContext } from '../context/appContext';
 //   body: string;
 // }
 
-const Home = () => {
-
+const Home = ({ signOut }) => {
+  const supabase = getClient();
   const session = useAppContext();
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+
   const fetchAll = async () => {
     if (!session) return;
     try {
@@ -42,7 +42,7 @@ const Home = () => {
         setQuestions(data);
       }
     } catch (error) {
-      alert('Error loading user questions!');
+      // alert('Error loading user questions!');
       console.log(error);
     } finally {
       setLoading(false);
@@ -55,6 +55,14 @@ const Home = () => {
 
   return (
     <div className='container' style={{ padding: '50px 0 100px 0' }}>
+      <button
+        onClick={() => {
+          console.log('SIGN OUT');
+          signOut();
+        }}
+      >
+        Sign out
+      </button>
       {/* {!session ? (
         <Auth
           supabaseClient={supabase}
@@ -62,20 +70,20 @@ const Home = () => {
           appearance={{ theme: ThemeSupa }}
         />
       ) : ( */}
-        <div>
-          <PostQuestion
-            onRequestUpdate={() => {
-              fetchAll();
-            }}
-          />
-          <QuestionList
-            onRequestUpdate={() => {
-              fetchAll();
-            }}
-            questions={questions}
-            loading={loading}
-          />
-        </div>
+      <div>
+        <PostQuestion
+          onRequestUpdate={() => {
+            fetchAll();
+          }}
+        />
+        <QuestionList
+          onRequestUpdate={() => {
+            fetchAll();
+          }}
+          questions={questions}
+          loading={loading}
+        />
+      </div>
       {/* }) */}
     </div>
   );

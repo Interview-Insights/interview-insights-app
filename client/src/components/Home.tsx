@@ -7,20 +7,21 @@ import {
   useUser,
   useSupabaseClient,
 } from '@supabase/auth-helpers-react';
+import { ThemeSupa } from '@supabase/auth-ui-shared';
 
-interface Question {
-  title: string;
-  body: string;
-}
+// interface Question {
+//   title: string;
+//   body: string;
+// }
 
 const Home = () => {
-  const session = useSession();
+  //   const session = useSession();
   const supabase = useSupabaseClient();
-  const user = useUser();
+  //   const user = useUser();
 
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  /** 
   const fetchAll = async () => {
     if (!session) return;
     try {
@@ -50,11 +51,22 @@ const Home = () => {
   useEffect(() => {
     fetchAll();
   }, [session]);
-
+*/
+  return (
+    <Auth
+      supabaseClient={supabase}
+      theme='dark'
+      appearance={{ theme: ThemeSupa }}
+    />
+  );
   return (
     <div className='container' style={{ padding: '50px 0 100px 0' }}>
       {!session ? (
-        <Auth supabaseClient={supabase} theme='dark' />
+        <Auth
+          supabaseClient={supabase}
+          theme='dark'
+          appearance={{ theme: ThemeSupa }}
+        />
       ) : (
         <div>
           <PostQuestion

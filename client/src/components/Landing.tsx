@@ -3,7 +3,7 @@ import styles from '../assets/styles/Landing.module.scss';
 
 const Landing = () => {
   return (
-    <div className={styles.Landing}>
+    <div className={styles.landing}>
       <div className={styles.intro}>
         <p className={styles.text}>
           Welcome to Interview Insights, the ultimate platform for software
@@ -13,12 +13,14 @@ const Landing = () => {
           content. Together, let's conquer interview challenges and level up our
           technical skills.
         </p>
-        <a href='/login'>
-          <button className={styles.button}>Sign Up or Log In</button>
-        </a>
+        <div className={styles.introbuttons}>
+          <a href='/login'>
+            <button className={styles.button}>Log In</button>
+          </a>
+        </div>
       </div>
-      <div className='image-container'>
-        <img src={puzzleImage} alt='Puzzle' />
+      <div>
+        <img className={styles.imageContainer} src={puzzleImage} alt='Puzzle' />
       </div>
     </div>
   );

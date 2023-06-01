@@ -1,23 +1,69 @@
-.Landing {
+.landing {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 
 .intro {
-  border: 1rem;
+  border-color: #3eb54d;
+  border-width: 5px;
+  padding: 1em;
+  margin: 3em;
+  border-style: solid;
+  box-shadow: 5px 5px 30px 5px #ffffff;
+  max-width: 40vw;
 }
 
 .text {
   display: flex;
   flex-direction: column;
-  max-width: 30vw;
-  font-size: 3em;
+  font-size: 2em;
   justify-content: center;
   align-content: center;
+  text-align: center;
 }
 
 .button {
   font-size: 2em;
+  margin: 3rem;
+}
+
+.imageContainer {
+  // flex: 1; /* Take up remaining space in the flex container */
+  background-color: #333333; /* Dark grey background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50vw;
+  max-height: auto;
+}
+
+.introbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1127) {
+  .landing {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .intro {
+    border-color: #3eb54d;
+    border-width: 5px;
+    margin: 1%;
+    border-style: solid;
+    box-shadow: 5px 5px 30px 5px #ffffff;
+    max-width: 60vw;
+  }
+
+  .text {
+    font-size: 1.5em;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
 }

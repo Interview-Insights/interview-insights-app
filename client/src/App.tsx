@@ -1,31 +1,48 @@
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
 import Landing from './components/Landing';
-import AuthBasic from './components/LogIn';
-import LogIn from './components/LogIn';
-import supabase from './config/supabaseClient.js';
-import { Auth } from '@supabase/auth-ui-react';
-import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { Routes, Route } from 'react-router-dom';
+import getClient from './config/supabaseClient.js';
+import { AppProvider } from './context/appContext';
+import { SupabaseAuth } from './components/Auth';
 
 const App = () => {
+  const supabase = getClient();
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session);
+    });
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+      if (session && window.location.pathname === '/login') {
+        window.location.href = '/home';
+      }
+    });
+  }, []);
+
+  const signOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (window.location.pathname === '/home') {
+      window.location.href = '/login';
+    }
+  };
+
+  console.log(supabase.auth);
+
   return (
-    <div>
-      <p>Interview Insights</p>
-      <Routes>
-        <Route path='/' element={<Landing />} />
-        <Route
-          path='/signup'
-          element={
-            <Auth
-              supabaseClient={supabase}
-              appearance={{ theme: ThemeSupa }}
-              theme='dark'
-            />
-          }
-        />
-        <Route path='/login' element={<AuthBasic />} />
-        {/* <Route path='/home' element={<Home />} /> */}
-      </Routes>
-    </div>
+    <AppProvider value={session}>
+      <div>
+        <p>Interview Insights</p>
+        <Routes>
+          <Route path='/' element={<Landing />} />
+          <Route path='/login' element={<SupabaseAuth />} />
+          <Route path='/home' element={<Home signOut={signOut} />} />
+        </Routes>
+      </div>
+    </AppProvider>
   );
 };
 

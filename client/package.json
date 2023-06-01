@@ -31,8 +31,10 @@
     "@babel/preset-typescript": "^7.18.6",
     "@babel/runtime-corejs3": "^7.20.7",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.10",
+    "@supabase/auth-helpers-react": "^0.4.0",
     "@supabase/auth-ui-react": "^0.4.2",
     "@supabase/auth-ui-shared": "^0.1.6",
+    "@supabase/supabase-js": "^2.24.0",
     "@swc/core": "^1.3.59",
     "@swc/helpers": "^0.5.1",
     "axios": "^1.2.2",
@@ -75,7 +77,6 @@
     ]
   },
   "devDependencies": {
-    "@supabase/supabase-js": "^2.22.0",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",

@@ -4,14 +4,18 @@
   align-items: center;
 }
 
+.title {
+  text-align: center;
+  font-size: 3em;
+}
+
 .intro {
-  border-color: #3eb54d;
-  border-width: 5px;
+  border: 5px solid #3eb54d;
   padding: 1em;
   margin: 3em;
-  border-style: solid;
   box-shadow: 5px 5px 30px 5px #ffffff;
   max-width: 40vw;
+  border-radius: 12px;
 }
 
 .text {
@@ -26,10 +30,20 @@
 .button {
   font-size: 2em;
   margin: 3rem;
+  border: 2px solid #3eb54d;
+  background-color: #333333;
+  border-radius: 12px;
+  padding: 10px 40px;
+  color: #3eb54d;
+}
+
+.button:hover {
+  box-shadow: 5px 5px 5px 0 #3eb54d, 0 17px 50px 0px #3eb54d;
+  text-shadow: 10px 12px 20px #3eb54d;
 }
 
 .imageContainer {
-  // flex: 1; /* Take up remaining space in the flex container */
+  flex-grow: 1; /* Take up remaining space in the flex container */
   background-color: #333333; /* Dark grey background color */
   display: flex;
   justify-content: center;
@@ -42,24 +56,23 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: relative;
 }
 
-@media screen and (max-width: 1127) {
+@media only screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
   .landing {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
   }
-
   .intro {
     border-color: #3eb54d;
     border-width: 5px;
-    margin: 1%;
+    margin: 1em;
     border-style: solid;
     box-shadow: 5px 5px 30px 5px #ffffff;
-    max-width: 60vw;
+    max-width: 85vw;
   }
-
   .text {
     font-size: 1.5em;
     justify-content: center;

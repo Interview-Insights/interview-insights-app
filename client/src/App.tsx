@@ -35,7 +35,6 @@ const App = () => {
   return (
     <AppProvider value={session}>
       <div>
-        <p>Interview Insights</p>
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<SupabaseAuth />} />

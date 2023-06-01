@@ -1,7 +1,8 @@
-import PostQuestion from './PostQuestion';
+import QuestionComponent from './PostQuestion';
 import QuestionList from './QuestionList';
 import { useState, useEffect, useContext } from 'react';
 import getClient from '../config/supabaseClient.js';
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
 import { useAppContext } from '../context/appContext';
 
 // import {
@@ -17,9 +18,9 @@ import { useAppContext } from '../context/appContext';
 //   body: string;
 // }
 
-const Home = ({ signOut }) => {
+const Home = ({ signOut, session }) => {
   const supabase = getClient();
-  const session = useAppContext();
+  // const session = useAppContext();
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,16 +30,16 @@ const Home = ({ signOut }) => {
       setLoading(true);
 
       let { data, error, status } = await supabase
-        .from('questions')
-        .select(`id, title, body, upvotes`)
-        .eq('user_id', user.id);
+        .from('posts')
+        .select(`question`);
+      // .eq('user_id', user.id);
 
       if (error && status !== 406) {
         throw error;
       }
 
       if (data) {
-        console.log(data);
+        // console.log('Question Data: ', data);
         setQuestions(data);
       }
     } catch (error) {
@@ -51,7 +52,7 @@ const Home = ({ signOut }) => {
 
   useEffect(() => {
     fetchAll();
-  }, [session]);
+  }, []);
 
   return (
     <div className='container' style={{ padding: '50px 0 100px 0' }}>
@@ -71,7 +72,8 @@ const Home = ({ signOut }) => {
         />
       ) : ( */}
       <div>
-        <PostQuestion
+        <QuestionComponent
+          session={session}
           onRequestUpdate={() => {
             fetchAll();
           }}

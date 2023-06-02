@@ -1,32 +1,42 @@
 import { useState, useEffect } from 'react';
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import getClient from '../config/supabaseClient.js';
 
-export default function PostQuestion({ onRequestUpdate }) {
-  const supabase = useSupabaseClient();
-  const user = useUser();
+export default function QuestionComponent({ session, onRequestUpdate }) {
+
+  const supabase = getClient();
+  // const user = useUser();
   const [loading, setLoading] = useState(false);
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
+  // const [title, setTitle] = useState('');
+  // const [body, setBody] = useState('');
+  const [postedQuestion, setPostedQuestion] = useState('');
 
-  async function postQuestion({ title, body }) {
+  async function postQuestion() {
+    // const { data, error } = await supabase
+    // .from('posts')
+    // .insert([
+    //   { some_column: 'someValue', other_column: 'otherValue' },
+    // ])
+
     try {
       setLoading(true);
 
+      // const updates = {
+      //   question: postedQuestion,
+      //   // title,
+      //   // body,
+      //   user_id: session.user.id,
+      //   // updated_at: new Date().toISOString(),
+      // };
+
       const updates = {
-        title,
-        body,
-        user_id: user.id,
-        updated_at: new Date().toISOString(),
+        question: postedQuestion,
+        user_id: session.user.id,
       };
+      
+      console.log({updates})
 
-      // let { error } = await supabase.from('questions').upsert(updates);
-
-    const { data, error } = await supabase
-    .from('posts')
-    .insert([
-      { question: 'someValue', industry: 'computers', user_id: user.id },
-    ]);
-
+      let { error } = await supabase.from('posts').insert([updates]);
       if (error) throw error;
       alert('Question Posted!');
       onRequestUpdate(); //fetch everything
@@ -37,35 +47,31 @@ export default function PostQuestion({ onRequestUpdate }) {
       setLoading(false);
     }
   }
-
+  // console.log("user", session.user.id)
   return (
-    <div className='post-questions'>
+    <form className='post-questions'>
       <h1>Post A Question</h1>
+ 
       <div>
-        <label htmlFor='title'>Title</label>
+        <label htmlFor='question'>Question</label>
         <input
-          id='title'
+          id='question'
           type='text'
-          value={title || ''}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor='body'>Body</label>
-        <input
-          id='body'
-          type='text'
-          value={body || ''}
-          onChange={(e) => setBody(e.target.value)}
+          value={postedQuestion || ''}
+          onChange={(e) => setPostedQuestion(e.target.value)}
         />
       </div>
       <button
+        type='button'
         className='button primary block'
-        onClick={() => postQuestion({ title, body })}
-        disabled={loading || !title || !body}
+        onClick={() => {
+          postQuestion();
+        }
+        }
+        disabled={loading || !postedQuestion}
       >
-        {loading ? 'Loading ...' : 'Create'}
+        {loading ? 'Loading ...' : 'Post Question'}
       </button>
-    </div>
+    </form>
   );
 }

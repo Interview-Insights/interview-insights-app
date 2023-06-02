@@ -1,6 +1,11 @@
 const path = require('path');
 const miniSVGDataURI = require('mini-svg-data-uri');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { DefinePlugin } = require('webpack');
+const dotenv = require('dotenv');
+dotenv.config();
+
+console.log(process.env.SUPABASE_URL, process.env.ANON_KEY);
 
 const common = {
   entry: {
@@ -65,6 +70,10 @@ const common = {
       hash: true,
       template: path.resolve(__dirname, 'static/index.html'),
       filename: 'index.html',
+    }),
+    new DefinePlugin({
+      'process.env.SUPABASE_URL': JSON.stringify(process.env.SUPABASE_URL),
+      'process.env.ANON_KEY': JSON.stringify(process.env.ANON_KEY),
     }),
   ].filter(Boolean),
   resolve: {

@@ -1,23 +1,82 @@
-.Landing {
+.landing {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 
+.title {
+  text-align: center;
+  font-size: 3em;
+}
+
 .intro {
-  border: 1rem;
+  border: 5px solid #3eb54d;
+  padding: 1em;
+  margin: 3em;
+  box-shadow: 5px 5px 30px 5px #ffffff;
+  max-width: 40vw;
+  border-radius: 12px;
 }
 
 .text {
   display: flex;
   flex-direction: column;
-  max-width: 30vw;
-  font-size: 3em;
+  font-size: 2em;
   justify-content: center;
   align-content: center;
+  text-align: center;
 }
 
 .button {
   font-size: 2em;
+  margin: 3rem;
+  border: 2px solid #3eb54d;
+  background-color: #333333;
+  border-radius: 12px;
+  padding: 10px 40px;
+  color: #3eb54d;
+}
+
+.button:hover {
+  box-shadow: 5px 5px 5px 0 #3eb54d, 0 17px 50px 0px #3eb54d;
+  text-shadow: 10px 12px 20px #3eb54d;
+}
+
+.imageContainer {
+  flex-grow: 1; /* Take up remaining space in the flex container */
+  background-color: #333333; /* Dark grey background color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50vw;
+  max-height: auto;
+}
+
+.introbuttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}
+
+@media only screen and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+  .landing {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .intro {
+    border-color: #3eb54d;
+    border-width: 5px;
+    margin: 1em;
+    border-style: solid;
+    box-shadow: 5px 5px 30px 5px #ffffff;
+    max-width: 85vw;
+  }
+  .text {
+    font-size: 1.5em;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+  }
 }

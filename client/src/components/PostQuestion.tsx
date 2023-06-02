@@ -19,7 +19,14 @@ export default function PostQuestion({ onRequestUpdate }) {
         updated_at: new Date().toISOString(),
       };
 
-      let { error } = await supabase.from('questions').upsert(updates);
+      // let { error } = await supabase.from('questions').upsert(updates);
+
+    const { data, error } = await supabase
+    .from('posts')
+    .insert([
+      { question: 'someValue', industry: 'computers', user_id: user.id },
+    ]);
+
       if (error) throw error;
       alert('Question Posted!');
       onRequestUpdate(); //fetch everything

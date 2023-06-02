@@ -13,6 +13,7 @@ const App = () => {
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
+      // console.log("THIS IS A SESSION: ", session);
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -30,7 +31,7 @@ const App = () => {
     }
   };
 
-  console.log(supabase.auth);
+  // console.log(supabase.auth);
 
   return (
     <AppProvider value={session}>
@@ -38,7 +39,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<SupabaseAuth />} />
-          <Route path='/home' element={<Home signOut={signOut} />} />
+          <Route path='/home' element={<Home signOut={signOut} session={session} />} />
         </Routes>
       </div>
     </AppProvider>

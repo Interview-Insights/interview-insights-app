@@ -1,18 +1,48 @@
 import './QuestionList.css';
 import { useState } from 'react';
 import styles from '../assets/styles/QuestionList.module.scss';
-import AddAnswerModal from './AddAnswerModal';
 import { Modal, Box, Typography } from '@mui/material';
+import getClient from '../config/supabaseClient.js';
+
 
 export default function QuestionList({ loading, questions, onRequestUpdate }) {
+  const supabase = getClient();
   const [open, setOpen] = useState(false);
   const [questionId, setQuestionId] = useState(null);
-  const handleOpen = () => {
+  const [postedAnswer, setPostedAnswer] = useState('');
+
+  const handleOpen = (id) => {
     setOpen(true);
-    setQuestionId(questionId);
+    setQuestionId(id);
   };
 
   const handleClose = () => setOpen(false);
+
+  function handleCancel() {
+    setPostedAnswer('');
+    handleClose();
+  }
+
+  async function postAnswer() {
+    try {
+      const updates = {
+        response: postedAnswer,
+        post_id: questionId
+      };
+
+      let { error } = await supabase.from('comments').insert([updates]);
+      if (error) throw error;
+      alert('Answer Posted!');
+      onRequestUpdate(); //fetch everything
+    } catch (error) {
+      alert('Error posting your question!');
+      console.log(error);
+    } finally {
+    }
+    console.log(postedAnswer)
+    setPostedAnswer('');
+    handleClose();
+  }
   
   return (
     <div className={styles.questionListContainer}>
@@ -22,12 +52,12 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
       ) : (
         <div className={styles.questionList}>
           {questions.map((question) => {
-            console.log(question.question_id);
+            // console.log(question.question_id);
             return (
               <div key={question.question_id} className={styles.questionItem}>
                 <h3 className='question-title'>{question.title}</h3>
                 <p className='question-text'>{question.question}</p>
-                <button onClick={handleOpen}>Add Answer</button>
+                <button onClick={() => handleOpen(question.question_id)}>Add Answer</button>
                 
                 {/* Map through answers list and render all the answers */}
                 {/* {answers.map((answer) => {
@@ -39,17 +69,24 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
             );
           })}
           <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                <div className={styles.modalDivStyle}>
-                  <textarea className={styles.modalTextAreaStyle}></textarea>
-                  <p>{questions.question_id}</p>
-                    <button className={styles.modalButtonStyle}>Submit Answer</button>
-                </div>
-                </Modal>
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <div className={styles.modalDivStyle}>
+              <textarea className={styles.modalTextAreaStyle}
+              value={postedAnswer || ''}
+              onChange={(e) => setPostedAnswer(e.target.value)}
+              ></textarea>
+              <p>{questionId}</p>
+                <button className={styles.modalButtonStyle}
+                onClick={postAnswer}>Submit Answer</button>
+                <button className={styles.modalButtonStyle}
+                onClick={handleCancel}
+                >Cancel</button>
+            </div>
+          </Modal>
         </div>
       )}
     </div>

@@ -2,6 +2,8 @@ import QuestionComponent from './PostQuestion';
 import QuestionList from './QuestionList';
 import { useState, useEffect } from 'react';
 import getClient from '../config/supabaseClient.js';
+// import styles from '../styles/home.module.css';
+import styles from '../assets/styles/Home.module.scss';
 
 const Home = ({ signOut, session }) => {
   const supabase = getClient();
@@ -37,15 +39,20 @@ const Home = ({ signOut, session }) => {
   }, [session]);
 
   return (
-    <div className='container' style={{ padding: '50px 0 100px 0' }}>
-      <button
-        onClick={() => {
-          console.log('SIGN OUT');
-          signOut();
-        }}
-      >
-        Sign out
-      </button>
+    // <div className='container' style={{ padding: '50px 0 100px 0' }}>
+    <>
+    <div className={styles.navBar}>
+      <button className={styles.signOut}
+          onClick={() => {
+            console.log('SIGN OUT');
+            signOut();
+          }}
+        >
+          Sign out
+        </button>
+    </div>
+    <div className={styles.homeContainer}>
+     
       <div>
         <QuestionComponent
           session={session}
@@ -62,6 +69,7 @@ const Home = ({ signOut, session }) => {
         />
       </div>
     </div>
+    </>
   );
 };
 

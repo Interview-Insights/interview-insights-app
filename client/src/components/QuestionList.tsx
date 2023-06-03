@@ -1,20 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react';
+import './QuestionList.css';
 
 export default function QuestionList({ loading, questions, onRequestUpdate }) {
   return (
     <div className='questions'>
-      <h1>Interview Questions</h1>
-      <ul>
-        {!loading &&
-          questions.map((question) => {
-            return 'hi';
-            // <li key={question.id}>
-            //   <h3>{question.title}</h3>
-            //   <p>{question.body}</p>
-            // </li>
+      <h1 className='questions-header'>Interview Questions</h1>
+      {loading ? (
+        <div className='loading'>Loading...</div>
+      ) : (
+        <ul className='question-list'>
+          {questions.map((question, i) => {
+            return (
+              <li key={i} className='question-item'>
+                <h3 className='question-title'>{question.title}</h3>
+                <p className='question-text'>{question.question}</p>
+              </li>
+            );
           })}
-      </ul>
+        </ul>
+      )}
     </div>
   );
 }

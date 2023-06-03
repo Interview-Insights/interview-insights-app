@@ -6,6 +6,7 @@ interface CssExports {
   'intro': string;
   'introbuttons': string;
   'landing': string;
+  'rotation': string;
   'text': string;
   'title': string;
 }

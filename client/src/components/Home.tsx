@@ -52,8 +52,6 @@ const Home = ({ signOut, session }) => {
         </button>
     </div>
     <div className={styles.homeContainer}>
-     
-      <div>
         <QuestionComponent
           session={session}
           onRequestUpdate={() => {
@@ -67,7 +65,6 @@ const Home = ({ signOut, session }) => {
           questions={questions}
           loading={loading}
         />
-      </div>
     </div>
     </>
   );

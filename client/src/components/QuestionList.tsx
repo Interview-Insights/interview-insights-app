@@ -55,9 +55,9 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
             // console.log(question.question_id);
             return (
               <div key={question.question_id} className={styles.questionItem}>
-                <h3 className='question-title'>{question.title}</h3>
-                <p className='question-text'>{question.question}</p>
-                <button onClick={() => handleOpen(question.question_id)}>Add Answer</button>
+                {/* <h3 className='question-title'>{question.title}</h3> */}
+                <p className={styles.questionText}>{question.question}</p>
+                <button className={styles.answerButton} onClick={() => handleOpen(question.question_id)}>Answer</button>
                 
                 {/* Map through answers list and render all the answers */}
                 {/* {answers.map((answer) => {

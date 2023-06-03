@@ -2,13 +2,14 @@
   width: 80%;
   margin: auto;
   padding: 2rem 0;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
 .questionsHeader {
-  text-align: center;
-  color: #fffdfd;
+  text-align: left;
+  color: #ffffff;
   font-size: 2rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .loading {
@@ -23,23 +24,46 @@
 }
 
 .questionItem {
-  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
   background-color: #f9f9f9;
   border-radius: 5px;
-  padding: 1rem;
+  padding: 0.5rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.questionTitle {
-  margin-bottom: 0.75rem;
-  color: #333;
-  font-size: 1.25rem;
+.questionText {
+  color: rgb(32, 32, 32);
+  font-size: 1.2rem;
+  margin: 1rem;
+  margin-right: 3rem;
 }
 
-.questionText {
-  color: #666;
-  font-size: 1rem;
+.answerButton {
+  // padding-left: .8rem;
+  // padding-right: .8rem;
+  border-radius: 5px;
+  border: none;
+  width: 80px;
+  height: 40px;
+  margin: .5rem;
+  align-self: flex-end;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
+
+// .questionTitle {
+//   margin-bottom: 0.75rem;
+//   color: #333;
+//   font-size: 1.25rem;
+// }
+
+// .questionText {
+//   color: #666;
+//   font-size: 1rem;
+// }
 
 .hiddenID {
   color: black;
@@ -59,13 +83,13 @@
   background-color: white;
   color: black;
   border: 2px solid #000;
-  box-Shadow: 24;
+  box-shadow: 24;
   padding: 2rem;
 }
 
 .modalButtonStyle {
   padding: 1rem;
-  margin: .4rem;
+  margin: 0.4rem;
 }
 
 .modalTextAreaStyle {

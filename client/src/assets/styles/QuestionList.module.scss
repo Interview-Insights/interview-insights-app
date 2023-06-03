@@ -40,3 +40,33 @@
   color: #666;
   font-size: 1rem;
 }
+
+.modalDivStyle {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  color: black;
+  border: 2px solid #000;
+  box-Shadow: 24;
+  padding: 2rem;
+}
+
+.modalButtonStyle {
+  padding: 1rem;
+  margin: .4rem;
+}
+
+.modalTextAreaStyle {
+  width: 90%;
+  height: 50%;
+  padding: 1rem;
+  margin: 1rem;
+}

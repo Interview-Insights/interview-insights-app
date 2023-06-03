@@ -2,6 +2,9 @@
 // Please do not change this file!
 interface CssExports {
   'loading': string;
+  'modalButtonStyle': string;
+  'modalDivStyle': string;
+  'modalTextAreaStyle': string;
   'questionItem': string;
   'questionList': string;
   'questionListContainer': string;

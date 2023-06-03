@@ -35,6 +35,20 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+.answerItem {
+  width: 90%;
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  font-size: 1.2rem;
+  color: black;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+}
+
 .questionText {
   color: rgb(32, 32, 32);
   font-size: 1.2rem;

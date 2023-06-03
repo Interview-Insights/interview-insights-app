@@ -2,6 +2,7 @@
 // Please do not change this file!
 interface CssExports {
   'answerButton': string;
+  'answerItem': string;
   'hiddenID': string;
   'loading': string;
   'modalButtonStyle': string;

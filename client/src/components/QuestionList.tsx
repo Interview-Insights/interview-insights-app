@@ -5,7 +5,7 @@ import { Modal, Box, Typography } from '@mui/material';
 import getClient from '../config/supabaseClient.js';
 
 
-export default function QuestionList({ loading, questions, onRequestUpdate }) {
+export default function QuestionList({ loading, answers, questions, onRequestUpdate }) {
   const supabase = getClient();
   const [open, setOpen] = useState(false);
   const [questionId, setQuestionId] = useState(null);
@@ -45,6 +45,7 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
   }
   
   return (
+    <>
     <div className={styles.questionListContainer}>
       <h1 className={styles.questionsHeader}>Interview Questions</h1>
       {loading ? (
@@ -52,20 +53,23 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
       ) : (
         <div className={styles.questionList}>
           {questions.map((question) => {
-            // console.log(question.question_id);
             return (
-              <div key={question.question_id} className={styles.questionItem}>
-                {/* <h3 className='question-title'>{question.title}</h3> */}
+              <><div key={question.question_id} className={styles.questionItem}>
                 <p className={styles.questionText}>{question.question}</p>
                 <button className={styles.answerButton} onClick={() => handleOpen(question.question_id)}>Answer</button>
-                
-                {/* Map through answers list and render all the answers */}
-                {/* {answers.map((answer) => {
-                  return(
-                    <p>{answer.}
-                  )
-                })} */}
-              </div>
+              </div><div className={styles.answerItem}>
+                  {answers.map((answer, i) => {
+                    return (
+                      answer.post_id === question.question_id ? (
+                        <div key={i}>
+                          <ul>
+                            <li>{answer.response}</li>
+                          </ul>
+                        </div>
+                      ) : null
+                    );
+                  })}
+                </div></>
             );
           })}
           <Modal
@@ -88,7 +92,9 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
             </div>
           </Modal>
         </div>
+      
       )}
     </div>
+    </>
   );
 }

@@ -35,13 +35,16 @@ const App = () => {
 
   return (
     <AppProvider value={session}>
-      <div>
+      <>
         <Routes>
           <Route path='/' element={<Landing />} />
           <Route path='/login' element={<SupabaseAuth />} />
-          <Route path='/home' element={<Home signOut={signOut} session={session} />} />
+          <Route
+            path='/home'
+            element={<Home signOut={signOut} session={session} />}
+          />
         </Routes>
-      </div>
+      </>
     </AppProvider>
   );
 };

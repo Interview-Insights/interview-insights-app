@@ -1,0 +1,43 @@
+.postQuestionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.questionForm {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.questionLabel{
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.questionInput {
+  display: flex;
+  width: 100%;
+  resize: vertical;
+  max-height: 40rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.postQuestionButton {
+  width: 11rem;
+  height: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #ccc;
+  cursor: pointer;
+}

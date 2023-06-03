@@ -1,0 +1,72 @@
+.questionListContainer {
+  width: 80%;
+  margin: auto;
+  padding: 2rem 0;
+}
+
+.questionsHeader {
+  text-align: center;
+  color: #fffdfd;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #666;
+}
+
+.questionList {
+  list-style: none;
+  padding: 0;
+}
+
+.questionItem {
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.questionTitle {
+  margin-bottom: 0.75rem;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.questionText {
+  color: #666;
+  font-size: 1rem;
+}
+
+.modalDivStyle {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+  background-color: white;
+  color: black;
+  border: 2px solid #000;
+  box-Shadow: 24;
+  padding: 2rem;
+}
+
+.modalButtonStyle {
+  padding: 1rem;
+  margin: .4rem;
+}
+
+.modalTextAreaStyle {
+  width: 90%;
+  height: 50%;
+  padding: 1rem;
+  margin: 1rem;
+}

@@ -28,6 +28,7 @@
 }
 
 .button {
+  transition: transform 0.3s ease-in-out;
   font-size: 2em;
   margin: 3rem;
   border: 2px solid #3eb54d;
@@ -40,6 +41,7 @@
 .button:hover {
   box-shadow: 5px 5px 5px 0 #3eb54d, 0 17px 50px 0px #3eb54d;
   text-shadow: 10px 12px 20px #3eb54d;
+  transform: scale(1.05);
 }
 
 .imageContainer {
@@ -79,4 +81,19 @@
     align-content: center;
     text-align: center;
   }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.imageContainer {
+  animation: rotation 20s infinite linear;
+  width: 30vw; /* Set the width to 25% of the viewport width */
+  margin: 6rem;
 }

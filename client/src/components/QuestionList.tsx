@@ -5,33 +5,14 @@ import AddAnswerModal from './AddAnswerModal';
 import { Modal, Box, Typography } from '@mui/material';
 
 export default function QuestionList({ loading, questions, onRequestUpdate }) {
-  // render Modal onClick
-  // const [modalOpen, setModalOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    color: 'black',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
+  const [questionId, setQuestionId] = useState(null);
+  const handleOpen = () => {
+    setOpen(true);
+    setQuestionId(questionId);
   };
 
-  // const handleOpen = () => {
-  //   setModalOpen(!modalOpen);
-  //   console.log('open', open);
-  //   // if (open) {
-  //   //   return (
-  //   //     <AddAnswerModal props={setModalOpen} />
-  //   //   );
-  // };
+  const handleClose = () => setOpen(false);
   
   return (
     <div className={styles.questionListContainer}>
@@ -40,15 +21,24 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
         <div className='loading'>Loading...</div>
       ) : (
         <div className={styles.questionList}>
-          {questions.map((question, i) => {
+          {questions.map((question) => {
+            console.log(question.question_id);
             return (
-              <div key={i} className={styles.questionItem}>
+              <div key={question.question_id} className={styles.questionItem}>
                 <h3 className='question-title'>{question.title}</h3>
                 <p className='question-text'>{question.question}</p>
-                {/* <button onClick={handleOpen}>Add Answer</button> */}
-                {/* open ? <AddAnswerModal props={setModalOpen} /> : null */}
                 <button onClick={handleOpen}>Add Answer</button>
-                <Modal
+                
+                {/* Map through answers list and render all the answers */}
+                {/* {answers.map((answer) => {
+                  return(
+                    <p>{answer.}
+                  )
+                })} */}
+              </div>
+            );
+          })}
+          <Modal
                   open={open}
                   onClose={handleClose}
                   aria-labelledby="modal-modal-title"
@@ -56,12 +46,10 @@ export default function QuestionList({ loading, questions, onRequestUpdate }) {
                 >
                 <div className={styles.modalDivStyle}>
                   <textarea className={styles.modalTextAreaStyle}></textarea>
+                  <p>{questions.question_id}</p>
                     <button className={styles.modalButtonStyle}>Submit Answer</button>
                 </div>
                 </Modal>
-              </div>
-            );
-          })}
         </div>
       )}
     </div>

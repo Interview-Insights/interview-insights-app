@@ -17,7 +17,7 @@ const Home = ({ signOut, session }) => {
 
       let { data, error, status } = await supabase
         .from('posts')
-        .select(`question`);
+        .select(`question, question_id`);
 
       if (error && status !== 406) {
         throw error;

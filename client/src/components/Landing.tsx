@@ -9,10 +9,13 @@ const Landing = () => {
         <div className={styles.intro}>
           <p className={styles.text}>
             Welcome to Interview Insights, the ultimate platform for software
-            engineers to share interview questions and collaborate. Join our
+            engineers to share interview questions and collaborate. </p>
+            <p className={styles.text}>Join our
             community to post and discuss the questions you've faced, provide
             answers to other developers questions, and upvote the most helpful
-            content. Together, let's conquer interview challenges and level up
+            content.</p>
+            <p className={styles.text}>
+            Together, let's conquer interview challenges and level up
             our technical skills.
           </p>
           <div className={styles.introbuttons}>

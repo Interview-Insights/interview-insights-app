@@ -39,10 +39,10 @@ export default function QuestionComponent({ session, onRequestUpdate }) {
     <div className={styles.postQuestionContainer}>
       <form className={styles.questionForm}>
         <h1>Post A Question</h1>
-          <label className={styles.questionLabel}
+          {/* <label className={styles.questionLabel}
           htmlFor='question'>
             Question
-          </label>
+          </label> */}
           <textarea className={styles.questionInput}
             id='question'
             value={postedQuestion || ''}

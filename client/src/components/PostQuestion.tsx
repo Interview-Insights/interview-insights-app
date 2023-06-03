@@ -37,40 +37,6 @@ export default function QuestionComponent({ session, onRequestUpdate }) {
     }
   }
 
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    // alignItems: 'center',
-    justifyContent: 'center',
-    padding: '20px',
-    marginLeft: '20px',
-  };
-
-  const buttonStyle = {
-    backgroundColor: '#007BFF',
-    color: 'white',
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    textTransform: 'uppercase',
-    marginTop: '10px',
-  };
-
-  const inputStyle = {
-    width: '80%',
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '5px',
-    border: '1px solid #ccc',
-  };
-
-  const labelStyle = {
-    fontSize: '1.2rem',
-    fontWeight: 'bold',
-    marginRight: '2rem',
-  };
-
   return (
   //   <form className='post-questions' style={formStyle}>
   //     <h1>Post A Question</h1>

@@ -1,4 +1,4 @@
-import './QuestionList.css';
+import '../assets/styles/QuestionList.module.scss';
 
 export default function QuestionList({ loading, questions, onRequestUpdate }) {
   return (
